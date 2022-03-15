@@ -10,7 +10,11 @@ import oauthClient, { maybeRestoreLogin } from './plugins/Oauth';
 import makeOptions from './router';
 
 const app = createApp(App);
-const Vuetify = createVuetify({});
+const Vuetify = createVuetify({
+  theme: {
+    defaultTheme: 'dark'
+  }
+});
 
 maybeRestoreLogin().then(() => {
   /*
