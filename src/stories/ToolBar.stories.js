@@ -1,4 +1,4 @@
-import ToolBar from '../components/molecules/ToolBar.vue';
+import ToolBar from '@/components/molecules/ToolBar.vue';
 
 export default {
   title: 'ToolBar',

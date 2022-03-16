@@ -21,6 +21,8 @@ module.exports = {
     const { config } = await loadConfigFromFile(
       path.resolve(__dirname, "../vite.config.ts")
     );
+    // config.resolve.alias['~storybook'] = path.resolve(__dirname)
+    previousConfig.resolve.alias['@'] = path.resolve(__dirname, '..', 'src')
 
     return mergeConfig(previousConfig, {
       ...config,

@@ -1,4 +1,9 @@
 // import { withVuetify } from '@socheatsok78/storybook-addon-vuetify/dist/decorators'
+import { app } from '@storybook/vue3';
+import vuetify from '@/plugins/vuetify'
+
+
+
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -10,22 +15,10 @@ export const parameters = {
   },
 }
 
-// export const globalTypes = {
-//   theme: {
-//     name: 'Theme',
-//     description: 'Global theme for components',
-//     defaultValue: 'light',
-//     toolbar: {
-//       icon: 'circlehollow',
-//       items: ['light', 'dark']
-//     }
-//   }
-// }
+// wrap all stories in `v-app`
+export const decorators = [story => ({
+  components: { story },
+  template: '<v-app><story /></v-app>',
+})]
 
-export const decorators = [
-  (story) => (
-    ({
-      template: '<v-app><story/></v-app>',
-    })
-  )
-]
+app.use(vuetify)
