@@ -1590,11 +1590,6 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@mdi/font@^5.9.55":
-  version "5.9.55"
-  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-5.9.55.tgz#41acd50b88073ded7095fc3029d8712b6e12f38e"
-  integrity sha512-jswRF6q3eq8NWpWiqct6q+6Fg/I7nUhrxYJfiEM8JJpap0wVJLQdbKtyS65GdlK7S7Ytnx3TTi/bmw+tBhkGmg==
-
 "@mdi/font@^6.5.95":
   version "6.5.95"
   resolved "https://registry.yarnpkg.com/@mdi/font/-/font-6.5.95.tgz#203922f6dd46397de9eb1f5956b85339adb6344d"
@@ -1796,14 +1791,6 @@
   integrity sha512-OAPJUAtgeINhh/TAlUID4QTs53Njm7xzddaVlEs/SXwgtiD1tW22zAB/W1wdqfrpmikgaWQ9Fw6Ws+hsiRm5Vg==
   dependencies:
     "@sinonjs/commons" "^1.7.0"
-
-"@socheatsok78/storybook-addon-vuetify@^0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@socheatsok78/storybook-addon-vuetify/-/storybook-addon-vuetify-0.1.9.tgz#ecc78d2d6262295e19138a09416480d4458f6e81"
-  integrity sha512-l8AwqZVFs0xNOfkTXve46QshjLWwceZhjDT8UF9fVrlQ2dWRc/ZkNpjerUV6w+uiORLr2pBs7q7P3vWF9lNZ4A==
-  dependencies:
-    "@mdi/font" "^5.9.55"
-    vuetify "^2.4.9"
 
 "@storybook/addon-actions@6.4.19", "@storybook/addon-actions@^6.4.19":
   version "6.4.19"
@@ -12081,11 +12068,6 @@ vue@^3.2.25:
     "@vue/runtime-dom" "3.2.31"
     "@vue/server-renderer" "3.2.31"
     "@vue/shared" "3.2.31"
-
-vuetify@^2.4.9:
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.6.4.tgz#18052f77492d32856fea35c910755075ff32acc9"
-  integrity sha512-2wEzU/Gz39gQCxK93xoiWPKCHQUnyUKWd81wB7Q7hfYJWu5QOWQXYlF0X/BgUZzf8IOyHWKiSNEAfEe9OE3b4w==
 
 "vuetify@npm:@vuetify/nightly@next":
   version "3.0.0-next-20220310.0"

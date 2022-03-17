@@ -1,4 +1,3 @@
-// import { withVuetify } from '@socheatsok78/storybook-addon-vuetify/dist/decorators'
 import { app } from '@storybook/vue3';
 import vuetify from '@/plugins/vuetify'
 
