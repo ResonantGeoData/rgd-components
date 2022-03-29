@@ -2,11 +2,11 @@
 import { defineComponent, inject, computed } from 'vue';
 import OAuthClient from '@girder/oauth-client';
 
-import ToolBar from '@/components/molecules/ToolBar.vue';
+import CesiumViewer from '@/components/organisms/CesiumViewer.vue';
 
 export default defineComponent({
   components: {
-    ToolBar,
+    CesiumViewer,
   },
   setup() {
     const oauthClient = inject<OAuthClient>('oauthClient');
@@ -29,10 +29,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <ToolBar />
-  <v-toolbar>
-    test
-  </v-toolbar>
+  <CesiumViewer />
   <v-app-bar app>
     <v-spacer />
     <v-btn

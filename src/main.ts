@@ -4,10 +4,16 @@ import * as Sentry from '@sentry/vue';
 import { createApp, } from 'vue';
 import { createRouter } from 'vue-router';
 import { createVuetify } from 'vuetify';
+import * as Cesium from 'cesium';
 
 import App from './App.vue';
 import oauthClient, { maybeRestoreLogin } from './plugins/Oauth';
 import makeOptions from './router';
+
+// Set token to `null` to avoid warning
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+Cesium.Ion.defaultAccessToken = null;
 
 const app = createApp(App);
 const Vuetify = createVuetify({

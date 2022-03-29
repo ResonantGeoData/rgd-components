@@ -1,8 +1,9 @@
-import { fileURLToPath, URL } from 'url';
 
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import Vuetify from '@vuetify/vite-plugin';
+import cesium from 'vite-plugin-cesium';
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,10 +17,11 @@ export default defineConfig({
     Vuetify({
       autoImport: true
     }),
+    cesium()
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': path.resolve(__dirname, './src'),
     }
   },
 });
