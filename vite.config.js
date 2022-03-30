@@ -7,6 +7,7 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   envPrefix: 'VUE_APP_',
   define: {
     // Populated by netlify https://docs.netlify.com/configure-builds/environment-variables/
@@ -17,7 +18,9 @@ export default defineConfig({
     Vuetify({
       autoImport: true
     }),
-    cesium()
+    cesium({
+      rebuildCesium: true
+    })
   ],
   resolve: {
     alias: {
