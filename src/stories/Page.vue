@@ -74,6 +74,7 @@
       </div>
     </section>
   </article>
+  <boundingBox />
 </template>
 
 <script>
