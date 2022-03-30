@@ -11906,10 +11906,9 @@ vfile@^4.0.0:
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
 
-vite-plugin-cesium@^1.2.14:
+"vite-plugin-cesium@git+ssh://git@github.com:subdavis/vite-plugin-cesium.git":
   version "1.2.14"
-  resolved "https://registry.yarnpkg.com/vite-plugin-cesium/-/vite-plugin-cesium-1.2.14.tgz#b282be02a9450137c0472ee103add6bfe118c723"
-  integrity sha512-jB8l84vEAkF+gEHyJyIYnMQR7JQGV5bqwbn1ljQRYVWVnKH6Kj/FNrtuJtW7uS8laT6q5/P6ACbEqtWIa8/yJw==
+  resolved "git+ssh://git@github.com:subdavis/vite-plugin-cesium.git#709c511eaaaa167f752ebd7cfd961f81f9338e82"
   dependencies:
     fs-extra "^9.1.0"
     rollup-plugin-external-globals "^0.6.1"
