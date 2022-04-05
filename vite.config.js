@@ -18,9 +18,7 @@ export default defineConfig({
     Vuetify({
       autoImport: true
     }),
-    cesium({
-      rebuildCesium: true
-    })
+    cesium()
   ],
   resolve: {
     alias: {

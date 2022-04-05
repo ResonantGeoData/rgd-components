@@ -17,6 +17,7 @@
     "@girder/oauth-client": "^0.8.0",
     "@mdi/font": "^6.5.95",
     "@sentry/vue": "^6.16.1",
+    "@types/geojson": "^7946.0.8",
     "axios": "^0.24.0",
     "cesium": "^1.91.0",
     "django-s3-file-field": "^0.3.0",

@@ -1,6 +1,7 @@
 const { loadConfigFromFile, mergeConfig } = require("vite");
 const eslintPlugin = require("vite-plugin-eslint").default;
 const path = require("path");
+const cesium = require('vite-plugin-cesium').default;
 
 module.exports = {
   "stories": [
@@ -25,6 +26,7 @@ module.exports = {
       ...config,
       plugins: [
         eslintPlugin(),
+        cesium(),
       ],
     });
   },
