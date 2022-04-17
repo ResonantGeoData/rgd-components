@@ -1,61 +1,32 @@
 
 <script lang="ts">
 import * as Cesium from 'cesium';
-// import { GeoJsonDataSource } from 'cesium';
 
-import { defineComponent, ref, onMounted, PropType, Ref, watchEffect } from 'vue';
+import { defineComponent, ref, onMounted, PropType, Ref, watchEffect, watch } from 'vue';
 import useCesium from '@/store/useCesium';
+import { Degrees } from '@/store/types';
 import { GeoJSON } from 'geojson';
 
-
-type Degrees = {
-  longitude: number,
-  latitude: number,
-  height: number,
-};
 
 export default defineComponent({
   name: 'CesiumViewer',
   props: {
     initialDestination: {
-      type: Object as PropType<Degrees> | undefined,
+      type: Object as PropType<Degrees>,
       required: false,
+      default:() => ({
+        'longitude': -93.849688,
+        'latitude': 40.690265,
+        'height': 4000000
+      })
     },
     footPrint: {
       type: Object as PropType<GeoJSON>,
       required: false,
-      default:() => ({
-        type: "Polygon",
-        coordinates: [
-          [
-            [
-              -84.14505029585798,
-              39.808049541284404
-            ],
-            [
-              -84.07694970414201,
-              39.808049541284404
-            ],
-            [
-              -84.07694970414201,
-              39.75395045871559
-            ],
-            [
-              -84.14505029585798,
-              39.75395045871559
-            ],
-            [
-              -84.14505029585798,
-              39.808049541284404
-            ]
-          ]
-        ]
-      }),
     }
   },
 
   setup(props){
-      // const cesiumViewer = ref();
     const map: Ref<null | HTMLElement> = ref(null);
 
     onMounted(async() =>{
@@ -64,10 +35,13 @@ export default defineComponent({
         setDestination,
         addFootprint,
       } = useCesium(map);
-      if(props.initialDestination){
+      if(props.initialDestination.longitude){
       setDestination(props.initialDestination);
       }
-      addFootprint(props.footPrint, 1);
+      if(props.footPrint?.type){
+        addFootprint(props.footPrint, 1);
+        }
+
       });
 
   },

@@ -12501,6 +12501,23 @@ vue-docgen-api@^4.38.0:
     ts-map "^1.0.3"
     vue-inbrowser-compiler-utils "^4.44.17"
 
+vue-docgen-api@^4.44.23:
+  version "4.44.23"
+  resolved "https://registry.yarnpkg.com/vue-docgen-api/-/vue-docgen-api-4.44.23.tgz#e6763b43b6a4083fb871c6ecc8e8cb4538b3846f"
+  integrity sha512-6l/k+g+XS35ccCDNw8bGtbSqcDKh2kA6kSohAIY7EGihK1nrWWr3w8cLfLZn1dg/lI+sou+DQZwuHFLjFiiqhA==
+  dependencies:
+    "@babel/parser" "^7.13.12"
+    "@babel/types" "^7.13.12"
+    "@vue/compiler-dom" "^3.2.0"
+    "@vue/compiler-sfc" "^3.2.0"
+    ast-types "0.14.2"
+    hash-sum "^1.0.2"
+    lru-cache "^4.1.5"
+    pug "^3.0.2"
+    recast "0.20.5"
+    ts-map "^1.0.3"
+    vue-inbrowser-compiler-utils "^4.44.23"
+
 vue-docgen-loader@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/vue-docgen-loader/-/vue-docgen-loader-1.5.0.tgz#bf8797ea9dde87a8d734b56176f105477d9bf266"
@@ -12524,12 +12541,25 @@ vue-eslint-parser@^8.0.0, vue-eslint-parser@^8.0.1:
     lodash "^4.17.21"
     semver "^7.3.5"
 
+vue-inbrowser-compiler-demi@^4.44.23:
+  version "4.44.23"
+  resolved "https://registry.yarnpkg.com/vue-inbrowser-compiler-demi/-/vue-inbrowser-compiler-demi-4.44.23.tgz#7410e160db0e0639aa0ba5c3af6a0c02606d4242"
+  integrity sha512-/gZxAana4VTJWACNTi4RL5Zs5bVDIUDJ9XlaibzmY3Nf32WK43tvmjrUe+f5uGYLysCHE9SFjFvRKaAhXnzXgA==
+
 vue-inbrowser-compiler-utils@^4.44.17:
   version "4.44.17"
   resolved "https://registry.yarnpkg.com/vue-inbrowser-compiler-utils/-/vue-inbrowser-compiler-utils-4.44.17.tgz#2e169afdccdc0b24487bd1b73ab10623eafe66b4"
   integrity sha512-dvxumVgIzR4FXjAWYWIOnpD+6bW0dLkoAv43UShER8gVIhLFo9UEmbF31wD6YWJj94lUpbVIuWl2qc6axYNEAQ==
   dependencies:
     camelcase "^5.3.1"
+
+vue-inbrowser-compiler-utils@^4.44.23:
+  version "4.44.23"
+  resolved "https://registry.yarnpkg.com/vue-inbrowser-compiler-utils/-/vue-inbrowser-compiler-utils-4.44.23.tgz#fcbe942ce87a846d1b9250561844085a6ead3e09"
+  integrity sha512-M2U6TPTU1QCiKFYUxgHy47xdZcKLPSbeTpeamHBtfIut1sjKOMtYmAOQ3IrX3W/v8A7j7jGadY4ieA1j3zQICw==
+  dependencies:
+    camelcase "^5.3.1"
+    vue-inbrowser-compiler-demi "^4.44.23"
 
 vue-loader@^16.0.0, vue-loader@^16.8.3:
   version "16.8.3"
