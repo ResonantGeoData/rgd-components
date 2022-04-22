@@ -6,7 +6,7 @@ export default {
   component: CesiumViewer,
 };
 
-const Template = (args: any) => ({
+const Template = (args) => ({
   components: { CesiumViewer },
   setup() {
     return { args };
