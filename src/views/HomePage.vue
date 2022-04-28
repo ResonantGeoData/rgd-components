@@ -2,12 +2,8 @@
 import { defineComponent, inject, computed } from 'vue';
 import OAuthClient from '@girder/oauth-client';
 
-import CesiumViewer from '@/components/organisms/CesiumViewer.vue';
 
 export default defineComponent({
-  components: {
-    CesiumViewer,
-  },
   setup() {
     const oauthClient = inject<OAuthClient>('oauthClient');
     if (oauthClient === undefined) {
@@ -29,7 +25,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <CesiumViewer />
   <v-app-bar app>
     <v-spacer />
     <v-btn

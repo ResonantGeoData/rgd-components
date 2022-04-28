@@ -3043,11 +3043,6 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.12.tgz#0d4557fd3b94497d793efd4e7d92df2f83b4ef24"
   integrity sha512-q4jlIR71hUpWTnGhXWcakgkZeHa3CCjcQcnuzU8M891BAWA2jHiziiWEPEkdS5pFsz7H9HJiy8BrK7tBRNrY7A==
 
-"@types/node@^17.0.24":
-  version "17.0.24"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.24.tgz#20ba1bf69c1b4ab405c7a01e950c4f446b05029f"
-  integrity sha512-aveCYRQbgTH9Pssp1voEP7HiuWlD2jW2BO56w+bVrJn04i61yh6mRfoKO6hEYQD9vF+W8Chkwc6j1M36uPkx4g==
-
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz#d3357479a0fdfdd5907fe67e17e0a85c906e1301"
@@ -12311,9 +12306,10 @@ vfile@^4.0.0:
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
 
-"vite-plugin-cesium@git+ssh://git@github.com:subdavis/vite-plugin-cesium.git":
-  version "1.2.14"
-  resolved "git+ssh://git@github.com:subdavis/vite-plugin-cesium.git#709c511eaaaa167f752ebd7cfd961f81f9338e82"
+vite-plugin-cesium@^1.2.16:
+  version "1.2.16"
+  resolved "https://registry.yarnpkg.com/vite-plugin-cesium/-/vite-plugin-cesium-1.2.16.tgz#76de3f4f8787e5233611731da7015f2077ba25b0"
+  integrity sha512-Ki01Ia8XujFX+yNeBdkFLshLq1cZvO0froKb/gf0i//RsQvzw2yBxFg1kzx7fYYe3V09vkpdYNAFIugfNrWgpg==
   dependencies:
     fs-extra "^9.1.0"
     rollup-plugin-external-globals "^0.6.1"

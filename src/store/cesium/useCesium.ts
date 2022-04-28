@@ -17,7 +17,6 @@ export default function useCesium(element?: Ref<HTMLElement | null>) {
   const cesiumViewer:Ref<any> = ref(null);
 
 
-  // onMounted(async() => {
     // Create ProviderViewModel based on different imagery sources
     // - these can be used without Cesium Ion
     const imageryViewModels = [];
@@ -212,7 +211,7 @@ export default function useCesium(element?: Ref<HTMLElement | null>) {
     Cesium.Camera.DEFAULT_VIEW_FACTOR = 0;
     Cesium.CreditDisplay.cesiumCredit = new Cesium.Credit('<a href="https://cesium.com/" target="_blank"><img src="cesium/Assets/Images/cesium_credit.png" title="CesiumJS"/></a>', true);
 
-  // });
+
 
   const setDestination = (destination: Degrees) => {
     cesiumViewer.value.camera.setView({
