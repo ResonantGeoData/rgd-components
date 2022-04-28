@@ -7,7 +7,7 @@ import { createVuetify } from 'vuetify';
 import * as Cesium from 'cesium';
 
 import App from './App.vue';
-import oauthClient, { maybeRestoreLogin } from './plugins/Oauth';
+import { restoreLogin, oauthClient } from './api/rest';
 import makeOptions from './router';
 
 // Set token to `null` to avoid warning
@@ -22,7 +22,7 @@ const Vuetify = createVuetify({
   }
 });
 
-maybeRestoreLogin().then(() => {
+restoreLogin().then(() => {
   /*
   The router must not be initialized until after the oauth flow is complete, because it
   stores the initial history state at the time of its construction, and we don't want it
