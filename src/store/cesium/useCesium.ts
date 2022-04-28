@@ -3,6 +3,8 @@ import * as Cesium from 'cesium';
 import { GeoJsonDataSource } from 'cesium';
 import { ref, watch, Ref } from 'vue';
 import { GeoJSON } from 'geojson';
+import { rgdFootprint, rgdRegionSites } from '@/api/rest';
+
 
 type Degrees = {
   longitude: number,
@@ -10,7 +12,7 @@ type Degrees = {
   height: number,
 };
 
-export default function useCesium(element: Ref<HTMLElement | null>) {
+export default function useCesium(element?: Ref<HTMLElement | null>) {
 
   const cesiumViewer:Ref<any> = ref(null);
 
@@ -220,23 +222,21 @@ export default function useCesium(element: Ref<HTMLElement | null>) {
 
 
 
-
-
-
-
-
   const visibleFootprints = ref<Record<string, GeoJSON >>({});
 
-  const addFootprint = async (footprint:GeoJSON, spatialId:number) => {
-    const key= `result_${spatialId}`;
-    // let footprint;
-    // // if (!region) {
-    //   footprint = (await rgdFootprint(spatialId));
-    //   key = `result_${spatialId}`;
-    // } else {
-    //   footprint = await rgdRegionSites(spatialId);
-    //   key = `region_${spatialId}`;
-    // }
+  const addFootprint = async (spatialId:number, footprint?:GeoJSON, region?: boolean) => {
+    let key= `result_${spatialId}` ;
+    if(!footprint){
+      let footprint;
+      if (!region) {
+        footprint = (await rgdFootprint(spatialId));
+        key = `result_${spatialId}`;
+      } else {
+        footprint = await rgdRegionSites(spatialId);
+        key = `region_${spatialId}`;
+      }
+      visibleFootprints.value = { ...visibleFootprints.value, [key]: footprint };
+  }
     if (key && footprint) {
       visibleFootprints.value = { ...visibleFootprints.value, [key]: footprint };
     }
