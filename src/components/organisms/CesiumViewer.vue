@@ -1,18 +1,17 @@
 
 <script lang="ts">
-import * as Cesium from 'cesium';
 
-import { defineComponent, ref, onMounted, PropType, Ref, watchEffect, watch } from 'vue';
-import useCesium from '@/store/useCesium';
-import { Degrees } from '@/store/types';
-import { GeoJSON } from 'geojson';
+import { defineComponent, ref, onMounted, PropType, Ref } from 'vue';
+import useCesium from '@/store/cesium/useCesium';
+import { Location, Footprint } from '@/store/types';
+
 
 
 export default defineComponent({
   name: 'CesiumViewer',
   props: {
     initialDestination: {
-      type: Object as PropType<Degrees>,
+      type: Object as PropType<Location>,
       required: false,
       default:() => ({
         'longitude': -93.849688,
@@ -20,8 +19,12 @@ export default defineComponent({
         'height': 4000000
       })
     },
-    footPrint: {
-      type: Object as PropType<GeoJSON>,
+    addFootPrint: {
+      type: Object as PropType<Footprint>,
+      required: false,
+    },
+    removeFootPrint: {
+      type: Number,
       required: false,
     }
   },
@@ -34,13 +37,21 @@ export default defineComponent({
       const {
         setDestination,
         addFootprint,
+        removeFootprint,
       } = useCesium(map);
+
       if(props.initialDestination.longitude){
       setDestination(props.initialDestination);
       }
-      if(props.footPrint?.type){
-        addFootprint(props.footPrint, 1);
-        }
+
+      if(props.addFootPrint?.geoFootPrint){
+        addFootprint(props.addFootPrint.spatialID, props.addFootPrint.geoFootPrint);
+      }
+
+      if(props.removeFootPrint){
+        removeFootprint(props.removeFootPrint,);
+      }
+
 
       });
 
@@ -52,30 +63,7 @@ export default defineComponent({
   <div
     id="cesiumContainer"
     ref="map"
-  >
-    <!-- <v-dialog
-      v-model="dialog"
-      open-on-hover
-      right
-      max-width="300px"
-    >
-      <v-card>
-        <v-simple-table
-          class="px-5"
-        >
-          <tbody>
-            <tr
-              v-for="(value, key) in properties"
-              :key="key"
-            >
-              <td>{{ key }}</td>
-              <td>{{ value }}</td>
-            </tr>
-          </tbody>
-        </v-simple-table>
-      </v-card>
-    </v-dialog> -->
-  </div>
+  />
 </template>
 
 <style>
