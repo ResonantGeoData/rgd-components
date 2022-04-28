@@ -2,8 +2,6 @@ import { app } from '@storybook/vue3';
 import vuetify from '@/plugins/vuetify'
 
 
-
-
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -20,4 +18,4 @@ export const decorators = [story => ({
   template: '<v-app><story /></v-app>',
 })]
 
-app.use(vuetify)
+app.use(vuetify);
