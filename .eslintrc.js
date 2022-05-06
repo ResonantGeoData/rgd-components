@@ -13,6 +13,7 @@ module.exports = {
     "@typescript-eslint/semi": ["error"],
     'vue/no-unused-vars': 'error',
     'vue/script-setup-uses-vars': 'error',
-    'vue/require-default-prop': 0
+    'vue/require-default-prop': 0,
+    'vue/multi-word-component-names': 0,
   }
 };

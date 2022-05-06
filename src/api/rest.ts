@@ -27,6 +27,47 @@ axiosInstance.interceptors.request.use((config) => ({
   },
 }));
 
+export async function rgdSearch(
+  limit?: number,
+  offset?: number,
+  q?: Polygon | MultiPolygon,
+  predicate?: string | null,
+  acquiredBefore?: string | null,
+  acquiredAfter?: string | null,
+  distanceMin? : string | null,
+  distanceMax? : string | null,
+  instrumentation?: string | null,
+  startTime?: string | null,
+  endTime?: string | null,
+  collections?: string[] | number[],
+
+) {
+  let geometry;
+  if (q?.coordinates.length === 0) {
+    // Catch if empty geometry is given (the default value for type sanity)
+    geometry = undefined;
+  } else {
+    geometry = q;
+  }
+  const response = await axiosInstance.get('rgd/search', {
+    params: {
+      limit,
+      offset,
+      q: JSON.stringify(geometry),
+      predicate,
+      acquired_after: acquiredAfter,
+      acquired_before: acquiredBefore,
+      distance_min: distanceMin,
+      distance_max: distanceMax,
+      instrumentation,
+      time_of_day_after: startTime,
+      time_of_day_before: endTime,
+      collections,
+    },
+  });
+  return response;
+}
+
 
 export async function rgdFootprint(
   spatialID: number,
