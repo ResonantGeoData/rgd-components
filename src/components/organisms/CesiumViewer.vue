@@ -1,7 +1,7 @@
 
 <script lang="ts">
 
-import { defineComponent, ref, onMounted, PropType, Ref } from 'vue';
+import { defineComponent, onMounted, PropType } from 'vue';
 import useCesium from '@/store/cesium/useCesium';
 import { Location, Footprint } from '@/store/types';
 
@@ -30,7 +30,6 @@ export default defineComponent({
   },
 
   setup(props){
-    const map: Ref<null | HTMLElement> = ref(null);
 
     onMounted(async() =>{
 
@@ -38,10 +37,10 @@ export default defineComponent({
         setDestination,
         addFootprint,
         removeFootprint,
-      } = useCesium(map);
+      } = useCesium();
 
       if(props.initialDestination.longitude){
-      setDestination(props.initialDestination);
+        setDestination(props.initialDestination);
       }
 
       if(props.addFootPrint?.geoFootPrint){
@@ -53,8 +52,7 @@ export default defineComponent({
       }
 
 
-      });
-
+    });
   },
 });
 </script>
@@ -62,7 +60,6 @@ export default defineComponent({
 <template>
   <div
     id="cesiumContainer"
-    ref="map"
   />
 </template>
 

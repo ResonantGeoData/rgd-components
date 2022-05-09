@@ -1,6 +1,5 @@
 
 import * as Cesium from 'cesium';
-import { GeoJsonDataSource } from 'cesium';
 import { ref, watch, Ref } from 'vue';
 import { GeoJSON } from 'geojson';
 import { rgdFootprint, rgdRegionSites } from '@/api/rest';
@@ -12,9 +11,9 @@ type Degrees = {
   height: number,
 };
 
-export default function useCesium(element?: Ref<HTMLElement | null>) {
+export default function useCesium() {
 
-  const cesiumViewer:Ref<any> = ref(null);
+  const cesiumViewer:Ref<Cesium.Viewer|null> = ref(null);
 
 
     // Create ProviderViewModel based on different imagery sources
@@ -207,14 +206,15 @@ export default function useCesium(element?: Ref<HTMLElement | null>) {
 
     });
     // Remove the Terrain section of the baseLayerPicker
-    cesiumViewer.value.baseLayerPicker.viewModel.terrainProviderViewModels.removeAll();
+    cesiumViewer.value.baseLayerPicker.viewModel.terrainProviderViewModels = [];
+
     Cesium.Camera.DEFAULT_VIEW_FACTOR = 0;
     Cesium.CreditDisplay.cesiumCredit = new Cesium.Credit('<a href="https://cesium.com/" target="_blank"><img src="cesium/Assets/Images/cesium_credit.png" title="CesiumJS"/></a>', true);
 
 
 
   const setDestination = (destination: Degrees) => {
-    cesiumViewer.value.camera.setView({
+    cesiumViewer.value?.camera.setView({
       destination: Cesium.Cartesian3.fromDegrees(destination.longitude, destination.latitude, destination.height),
     });
   };
@@ -255,7 +255,7 @@ export default function useCesium(element?: Ref<HTMLElement | null>) {
     }
   };
 
-  const footprintSources: Record<string, GeoJsonDataSource> = {};
+  const footprintSources: Record<string, Cesium.DataSource> = {};
 
   const HUERISTIC_STATUS_DATA = {
     positive_annotated: '#000000',
@@ -268,11 +268,13 @@ export default function useCesium(element?: Ref<HTMLElement | null>) {
     ignore: '#FFA07A', // lightsalmon
   };
 
-  const addGeojson = async (geojson: GeoJSON): Promise<GeoJsonDataSource> => {
-    // cesiumViewer.value.dataSources.remove(source);
-    const source = await cesiumViewer.value.dataSources.add(
-      Cesium.GeoJsonDataSource.load(geojson),
-    );
+  const addGeojson = async (geojson: Cesium.DataSource | GeoJSON): Promise<Cesium.DataSource> => {
+
+
+      const source:Cesium.DataSource = await cesiumViewer.value?.dataSources.add(
+      Cesium.GeoJsonDataSource.load(geojson) ,
+    ) as Cesium.DataSource;
+
     // Change display properties for all entities in data source
     /* eslint-disable no-param-reassign */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -288,11 +290,9 @@ export default function useCesium(element?: Ref<HTMLElement | null>) {
       entity.polygon.height = 0;
       entity.polygon.material = color;
       entity.polygon.outlineColor = Cesium.Color.BLACK;
-      // entity.polygon.outline = true;
-      // entity.polygon.outlineWidth = 30; // WebGL issue - doesn't do anything
-    });
-    /* eslint-enable no-param-reassign */
 
+    });
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     return source;
   };
 
@@ -302,7 +302,7 @@ export default function useCesium(element?: Ref<HTMLElement | null>) {
         if (!Object.keys(newFootprints).includes(key)) {
           // remove footprint
           if (key in footprintSources) {
-            cesiumViewer.value.dataSources.remove(footprintSources[key]);
+            cesiumViewer.value?.dataSources.remove(footprintSources[key]);
             delete footprintSources[key];
           }
         }
@@ -313,7 +313,7 @@ export default function useCesium(element?: Ref<HTMLElement | null>) {
         if (!Object.keys(oldFootprints).includes(key)) {
           // add footprint
           footprintSources[key] = await addGeojson(footprint);
-          cesiumViewer.value.flyTo(footprintSources[key], {
+          cesiumViewer.value?.flyTo(footprintSources[key], {
             offset: new Cesium.HeadingPitchRange(
               Cesium.Math.toRadians(0),
               Cesium.Math.toRadians(-90.0),
