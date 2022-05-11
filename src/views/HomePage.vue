@@ -2,12 +2,8 @@
 import { defineComponent, inject, computed } from 'vue';
 import OAuthClient from '@girder/oauth-client';
 
-import ToolBar from '@/components/molecules/ToolBar.vue';
 
 export default defineComponent({
-  components: {
-    ToolBar,
-  },
   setup() {
     const oauthClient = inject<OAuthClient>('oauthClient');
     if (oauthClient === undefined) {
@@ -29,10 +25,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <ToolBar />
-  <v-toolbar>
-    test
-  </v-toolbar>
   <v-app-bar app>
     <v-spacer />
     <v-btn

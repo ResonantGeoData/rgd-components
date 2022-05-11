@@ -4,10 +4,16 @@ import * as Sentry from '@sentry/vue';
 import { createApp, } from 'vue';
 import { createRouter } from 'vue-router';
 import { createVuetify } from 'vuetify';
+import * as Cesium from 'cesium';
 
 import App from './App.vue';
-import oauthClient, { maybeRestoreLogin } from './plugins/Oauth';
+import { restoreLogin, oauthClient } from './api/rest';
 import makeOptions from './router';
+
+// Set token to `null` to avoid warning
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+Cesium.Ion.defaultAccessToken = null;
 
 const app = createApp(App);
 const Vuetify = createVuetify({
@@ -16,7 +22,7 @@ const Vuetify = createVuetify({
   }
 });
 
-maybeRestoreLogin().then(() => {
+restoreLogin().then(() => {
   /*
   The router must not be initialized until after the oauth flow is complete, because it
   stores the initial history state at the time of its construction, and we don't want it

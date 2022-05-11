@@ -5,18 +5,28 @@
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
+    "importHelpers": true,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "lib": [
       "esnext",
       "dom"
     ],
     "types": [
-      "vite/client"
-    ]
+      "vite/client",
+      "node"
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+    }
   },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,7 +1,7 @@
 import ToolBar from '@/components/molecules/ToolBar.vue';
 
 export default {
-  title: 'ToolBar',
+  title: 'Molecules/ToolBar',
   component: ToolBar,
 };
 
@@ -17,6 +17,3 @@ export const Primary = Template.bind({});
 Primary.args = {
   text: 'Search',
  };
-
-export const Secondary = Template.bind({});
-Secondary.args = {  };
