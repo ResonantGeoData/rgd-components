@@ -20,7 +20,6 @@
     "axios": "^0.24.0",
     "cesium": "^1.91.0",
     "django-s3-file-field": "^0.3.0",
-    "serve": "^13.0.2",
     "vue": "^3.2.25",
     "vue-docgen-api": "^4.44.23",
     "vue-router": "^4.0.12",
