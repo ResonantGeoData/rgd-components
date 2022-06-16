@@ -17,6 +17,3 @@ export const Primary = Template.bind({});
 Primary.args = {
   text: 'Search',
  };
-
-export const Secondary = Template.bind({});
-Secondary.args = {  };
