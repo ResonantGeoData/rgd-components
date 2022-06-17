@@ -2,34 +2,50 @@
 import {
   defineComponent, ref,
 } from 'vue';
+import Datepicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
 
 import { resultsFilter } from '@/store/results';
 
 export default defineComponent({
   name: 'DateRange',
-  
-  setup() {
-    const startDate = ref('');
-    const startTime = ref('');
-    const endDate = ref('');
-    const endTime = ref('');
+  components: { Datepicker },
 
-    const updateInput = () => {
-      if (startDate.value) {
-        resultsFilter.value.acquired.startDate = `${startDate.value}T${startTime.value}`;
-      }
-      if (endDate.value) {
-        resultsFilter.value.acquired.endDate = `${endDate.value}T${endTime.value}`;
-      }
+  setup() {
+    // const startDate = ref('');
+    // const startTime = ref('');
+    // const endDate = ref('');
+    // const endTime = ref('');
+
+    const start = ref(new Date());
+    const end = ref();
+
+
+    const format = (date:Date) => {
+      const formattedDate = date.toISOString().slice(1,16);
+
+      // const time = date.get();
+
+      return `${formattedDate}`;
     };
+
+
+
+    // const updateInput = () => {
+    //   if (start.value) {
+    //     resultsFilter.value.acquired.start = `${start.value}T${start.value}`;
+    //   }
+    //   if (end.value) {
+    //     resultsFilter.value.acquired.end = `${end.value}T${end.value}`;
+    //   }
+    // };
 
     return {
       resultsFilter,
-      startTime,
-      startDate,
-      endTime,
-      endDate,
-      updateInput,
+      // updateInput,
+      start,
+      end,
+      format,
     };
   },
 });
@@ -38,6 +54,32 @@ export default defineComponent({
 
 <template>
   <v-row
+    no-gutters
+    justify="space-evenly"
+  >
+    <v-col
+      cols="6"
+      class="pr-3"
+    >
+      <Datepicker
+        v-model="resultsFilter.acquired.start"
+        dark
+        :format="format"
+      />
+    </v-col>
+    <v-icon>mdi-minus</v-icon>
+    <v-col
+      cols="5"
+    >
+      <Datepicker
+        v-model="end"
+        dark
+      />
+    </v-col>
+  </v-row>
+
+  <!-- Potentially add back when vuetify 3 is available. As of 6/17 the vuepic date/time picker is significantly better though -->
+  <!-- <v-row
     no-gutters
     justify="center"
   >
@@ -135,5 +177,5 @@ export default defineComponent({
         </v-btn>
       </div>
     </v-dialog>
-  </v-row>
+  </v-row> -->
 </template>

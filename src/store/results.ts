@@ -10,15 +10,11 @@ export const resultsFilter = ref<ResultsFilter>({
     instrumentation: null,
     collections: [],
     acquired: {
-      startDate: null,
-      endDate: null,
-      startDateModal: false,
-      endDateModal: false,
+      start: null,
+      end: null,
     },
     time: {
       startTime: null,
       endTime: null,
-      startTimeModal: false,
-      endTimeModal: false,
     },
   });

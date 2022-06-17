@@ -23,15 +23,11 @@ export interface ResultsFilter {
     instrumentation: string | null;
     collections: Collection[];
     acquired: {
-      startDate: string | null;
-      endDate: string | null;
-      startDateModal?: boolean;
-      endDateModal?: boolean;
+      start: string | null;
+      end: string | null;
     };
     time: {
       startTime: string | null;
       endTime: string | null;
-      startTimeModal?: boolean;
-      endTimeModal?: boolean;
     };
   }

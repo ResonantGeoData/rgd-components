@@ -16,9 +16,3 @@ const Template = (args) => ({
 });
 
 export const Primary = Template.bind({});
-Primary.args = {
-  text: 'Date and Time',
- };
-
-export const Secondary = Template.bind({});
-Secondary.args = {  };
