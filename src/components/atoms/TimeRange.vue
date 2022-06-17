@@ -1,23 +1,65 @@
 <script lang="ts">
 import {
-  defineComponent,
+  defineComponent, ref,
 } from 'vue';
+
+import Datepicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
 
 import { resultsFilter } from '@/store/results';
 
 export default defineComponent({
   name: 'TimeRange',
-  emits:['input', resultsFilter],
+  components: { Datepicker },
+
   setup() {
+    const startTime = ref();
+    const endTime = ref();
     return {
       resultsFilter,
+      startTime,
+      endTime,
     };
   },
 });
 
 </script>
-
 <template>
+  <v-row>
+    <v-col
+      cols="6"
+    >
+      <Datepicker
+        v-model="startTime"
+        time-picker
+        dark
+      >
+        <template #input-icon>
+          <v-icon
+            icon="mdi-clock-time-four-outline"
+          />
+        </template>
+      </Datepicker>
+    </v-col>
+    <v-col
+      cols="6"
+    >
+      <Datepicker
+        v-model="endTime"
+        time-picker
+        dark
+      >
+        <template #input-icon>
+          <v-icon
+            icon="mdi-clock-time-four-outline"
+          />
+        </template>
+      </Datepicker>
+    </v-col>
+  </v-row>
+</template>
+
+<!-- <template>
   <div>
     <div>
       Time Range
@@ -111,4 +153,4 @@ export default defineComponent({
       </v-dialog>
     </v-row>
   </div>
-</template>
+</template> -->
