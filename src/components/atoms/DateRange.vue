@@ -18,7 +18,7 @@ export default defineComponent({
     // const endTime = ref('');
 
     const start = ref(new Date());
-    const end = ref();
+    const end = ref((new Date()));
 
 
     const format = (date:Date) => {
@@ -74,9 +74,11 @@ export default defineComponent({
       <Datepicker
         v-model="end"
         dark
+        :format="format"
       />
     </v-col>
   </v-row>
+</template>
 
   <!-- Potentially add back when vuetify 3 is available. As of 6/17 the vuepic date/time picker is significantly better though -->
   <!-- <v-row
@@ -177,5 +179,5 @@ export default defineComponent({
         </v-btn>
       </div>
     </v-dialog>
-  </v-row> -->
-</template>
+  </v-row>
+</template> -->
