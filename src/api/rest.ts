@@ -41,3 +41,9 @@ export async function rgdRegionSites(
   const response = await axiosInstance.get<GeoJSON>(`watch/region/${regionId}/sites`);
   return response.data;
 }
+
+
+export async function rgdCollections() {
+  const response = await axiosInstance.get('/rgd/collection');
+  return response.data.results;
+}
