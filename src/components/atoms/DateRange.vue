@@ -1,6 +1,6 @@
 <script lang="ts">
 import {
-  defineComponent, ref,
+  defineComponent,
 } from 'vue';
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
@@ -12,39 +12,14 @@ export default defineComponent({
   components: { Datepicker },
 
   setup() {
-    // const startDate = ref('');
-    // const startTime = ref('');
-    // const endDate = ref('');
-    // const endTime = ref('');
-
-    const start = ref(new Date());
-    const end = ref((new Date()));
-
-
     const format = (date:Date) => {
       const formattedDate = date.toISOString().slice(1,16);
-
-      // const time = date.get();
 
       return `${formattedDate}`;
     };
 
-
-
-    // const updateInput = () => {
-    //   if (start.value) {
-    //     resultsFilter.value.acquired.start = `${start.value}T${start.value}`;
-    //   }
-    //   if (end.value) {
-    //     resultsFilter.value.acquired.end = `${end.value}T${end.value}`;
-    //   }
-    // };
-
     return {
       resultsFilter,
-      // updateInput,
-      start,
-      end,
       format,
     };
   },
@@ -62,7 +37,7 @@ export default defineComponent({
       class="pr-3"
     >
       <Datepicker
-        v-model="resultsFilter.acquired.start"
+        v-model="resultsFilter.acquired.startDate"
         dark
         :format="format"
       />
@@ -72,7 +47,7 @@ export default defineComponent({
       cols="5"
     >
       <Datepicker
-        v-model="end"
+        v-model="resultsFilter.acquired.endDate"
         dark
         :format="format"
       />
@@ -80,7 +55,7 @@ export default defineComponent({
   </v-row>
 </template>
 
-  <!-- Potentially add back when vuetify 3 is available. As of 6/17 the vuepic date/time picker is significantly better though -->
+  <!-- Potentially add back when vuetify 3 is available. As of 6/17/22 the vuepic date/time picker is significantly better though -->
   <!-- <v-row
     no-gutters
     justify="center"
