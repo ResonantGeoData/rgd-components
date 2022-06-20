@@ -10,11 +10,18 @@ import {
 
 import { Polygon, MultiPolygon } from 'geojson';
 
+export   const useMap = ref(false);
 
 export const searchLimit = ref<number>(10);
 
 export const searchOffset = ref<number>(0);
+
+export const geometryInputSelection = ref();
+
 export const specifiedShape = ref<Polygon | MultiPolygon>({ type: 'Polygon', coordinates: [] });
+
+export const drawnShape = ref<Polygon | MultiPolygon>({ type: 'Polygon', coordinates: [] });
+
 export const searchResults = ref<RGDResultList>();
 export const searchResultsTotal = ref<number>();
 export const searchParameters = ref<SearchParameters>({
@@ -22,8 +29,6 @@ export const searchParameters = ref<SearchParameters>({
   acquired: {
     startDate: null,
     endDate: null,
-    startDateModal: false,
-    endDateModal: false,
   },
 });
 
@@ -35,11 +40,13 @@ export const resultsFilter = ref<ResultsFilter>({
   },
   instrumentation: null,
   collections: [],
+  acquired: {
+    startDate: null,
+    endDate: null,
+  },
   time: {
     startTime: null,
     endTime: null,
-    startTimeModal: false,
-    endTimeModal: false,
   },
 });
 
