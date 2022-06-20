@@ -248,11 +248,7 @@ export default function useCesium() {
     } else {
       key = `region_${spatialId}`;
     }
-    if (visibleFootprints.value[key]) {
-      visibleFootprints.value = Object.fromEntries(
-        Object.entries(visibleFootprints.value).filter(([k]) => k !== key),
-      );
-    }
+    delete visibleFootprints.value[key];
   };
 
   const footprintSources: Record<string, Cesium.DataSource> = {};

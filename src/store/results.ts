@@ -10,8 +10,8 @@ export const resultsFilter = ref<ResultsFilter>({
     instrumentation: null,
     collections: [],
     acquired: {
-      start: null,
-      end: null,
+      startDate: null,
+      endDate: null,
     },
     time: {
       startTime: null,
