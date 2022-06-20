@@ -31,7 +31,7 @@ export default defineComponent({
 
 <template>
   <v-select
-    v-model="searchParameters.predicate"
+    :model="searchParameters.predicate"
     :items="predicate"
     label="Predicate"
     outlined
