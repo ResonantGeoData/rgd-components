@@ -5,9 +5,18 @@ import {
 import {
   updateResults,
 } from '@/store/search';
+import  DateRange from '../atoms/DateRange.vue';
+import  Predicate from '../atoms/Predicate.vue';
+import GeoJsonForm from './GeoJsonForm.vue';
 
 export default defineComponent({
   name: 'Search',
+  components: {
+    DateRange,
+    Predicate,
+    GeoJsonForm,
+  },
+
   setup(){
     return {
       updateResults,
@@ -27,11 +36,11 @@ export default defineComponent({
       <v-row justify="center">
         <v-col cols="11">
           <v-card-subtitle>Specify search area</v-card-subtitle>
-          <!-- <GeoJsonForm /> -->
+          <GeoJsonForm />
           <v-card-subtitle>Apply search logic</v-card-subtitle>
-          <!-- <Predicate /> -->
+          <Predicate />
           <v-card-subtitle>Acquired date range</v-card-subtitle>
-          <!-- <DateRange /> -->
+          <DateRange />
 
           <v-btn
             color="primary"
