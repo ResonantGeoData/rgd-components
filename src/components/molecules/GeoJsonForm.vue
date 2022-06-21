@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import {
-  drawnShape, specifiedShape, geometryInputSelection,
+  drawnShape, rgd_search, geometryInputSelection,
 } from '@/store/search';
 import { useMap } from '@/store/search';
 
@@ -30,7 +30,7 @@ export default defineComponent({
       geometryInputSelection.value = value;
     };
 
-    const isGeoJSON = (inputText: string) => {
+    const isGeoJSON = (inputText: string) =>{
       try {
         JSON.parse(inputText);
         geoJsonErrorMessages.value = [];
@@ -42,9 +42,9 @@ export default defineComponent({
     const confirmGeoJSON = () => {
       const jsonForm = JSON.parse(geoJsonString.value);
       if (jsonForm.geometry) {
-        specifiedShape.value = jsonForm.geometry;
+        rgd_search.value.specifiedShape = jsonForm.geometry;
       } else {
-        specifiedShape.value = jsonForm;
+        rgd_search.value.specifiedShape = jsonForm;
       }
     };
     const validateFile = (file: File) => {
@@ -73,7 +73,6 @@ export default defineComponent({
       clearShape,
       selectShape,
       drawnShape,
-      specifiedShape,
       geometryInputSelection,
       geoOptions,
       geoJsonString,

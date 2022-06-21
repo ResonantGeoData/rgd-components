@@ -3,7 +3,7 @@ import {
   defineComponent,
 } from 'vue';
 
-import { searchParameters } from '@/store/search';
+import { rgd_search } from '@/store/search';
 
 export default defineComponent({
   name: 'Predicate',
@@ -22,7 +22,7 @@ export default defineComponent({
 
     return {
       predicate,
-      searchParameters,
+      rgd_search,
     };
   },
 });
@@ -31,12 +31,12 @@ export default defineComponent({
 
 <template>
   <v-select
-    :model="searchParameters.predicate"
+    :model="rgd_search.predicate"
     :items="predicate"
     label="Predicate"
     outlined
     dense
     value=""
-    @input="$emit('input', searchParameters)"
+    @input="$emit('input', rgd_search)"
   />
 </template>

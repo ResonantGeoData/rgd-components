@@ -1,24 +1,21 @@
 <script lang="ts">
 import {
-  defineComponent, ref,
+  defineComponent
 } from 'vue';
 
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 
-import { resultsFilter } from '@/store/results';
+import { rgd_search } from '@/store/search';
 
 export default defineComponent({
   name: 'TimeRange',
   components: { Datepicker },
 
   setup() {
-    const startTime = ref();
-    const endTime = ref();
+
     return {
-      resultsFilter,
-      startTime,
-      endTime,
+      rgd_search,
     };
   },
 });
@@ -30,7 +27,7 @@ export default defineComponent({
       cols="6"
     >
       <Datepicker
-        v-model="startTime"
+        v-model="rgd_search.time.startTime"
         time-picker
         dark
       >
@@ -45,7 +42,7 @@ export default defineComponent({
       cols="6"
     >
       <Datepicker
-        v-model="endTime"
+        v-model="rgd_search.time.endTime"
         time-picker
         dark
       >

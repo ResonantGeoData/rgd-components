@@ -5,7 +5,7 @@ import {
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 
-import { resultsFilter } from '@/store/results';
+import { rgd_search } from '@/store/search';
 
 export default defineComponent({
   name: 'DateRange',
@@ -19,7 +19,7 @@ export default defineComponent({
     };
 
     return {
-      resultsFilter,
+      rgd_search,
       format,
     };
   },
@@ -37,7 +37,7 @@ export default defineComponent({
       class="pr-3"
     >
       <Datepicker
-        v-model="resultsFilter.acquired.startDate"
+        v-model="rgd_search.acquired.startDate"
         dark
         :format="format"
       />
@@ -47,7 +47,7 @@ export default defineComponent({
       cols="5"
     >
       <Datepicker
-        v-model="resultsFilter.acquired.endDate"
+        v-model="rgd_search.acquired.endDate"
         dark
         :format="format"
       />

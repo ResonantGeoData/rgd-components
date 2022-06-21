@@ -3,7 +3,7 @@
 import {
   defineComponent, ref,
 } from 'vue';
-import { resultsFilter } from '@/store/results';
+import { rgd_search } from '@/store/search';
 import { rgdCollections } from '@/api/rest';
 
 export default defineComponent({
@@ -17,7 +17,7 @@ export default defineComponent({
     });
     return {
       collections,
-      resultsFilter,
+      rgd_search,
     };
   },
 });
@@ -25,7 +25,7 @@ export default defineComponent({
 
 <template>
   <v-combobox
-    v-model="resultsFilter.collections"
+    v-model="rgd_search.collections"
     label="Collections"
     :items="collections"
     :item-text="'name'"
@@ -33,6 +33,6 @@ export default defineComponent({
     outlined
     multiple
     dense
-    @input="$emit('input', resultsFilter)"
+    @input="$emit('input', rgd_search)"
   />
 </template>

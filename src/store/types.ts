@@ -1,4 +1,4 @@
-import { GeoJSON } from 'geojson';
+import { GeoJSON, Polygon, MultiPolygon } from 'geojson';
 
 export type Location = {
   longitude: number,
@@ -30,30 +30,37 @@ export type RGDResult = {
 };
 export type RGDResultList = Array<RGDResult>;
 
-export interface SearchParameters {
-  predicate: string | null;
-  acquired: {
-    startDate: string | null;
-    endDate: string | null;
-  };
-}
+// export interface SearchParameters {
+//   predicate: string | null;
+//   acquired: {
+//     startDate: string | null;
+//     endDate: string | null;
+//   };
+// }
 
 export interface Collection {
   id: number | null;
   name: string | null;
-}export interface ResultsFilter {
-  distance: {
-    min: string | null;
-    max: string | null;
-  };
-  instrumentation: string | null;
-  collections: Collection[];
+}
+
+export interface RGDSearch {
+  searchLimit: number,
+  searchOffset: number,
+  specifiedShape: Polygon | MultiPolygon,
+  predicate: string | null,
   acquired: {
-    startDate: string | null;
-    endDate: string | null;
-  };
+    startDate: string | null,
+    endDate: string | null,
+  }
+  distance: {
+    min: string | null,
+    max: string | null,
+  }
+  instrumentation: string | null,
   time: {
-    startTime: string | null;
-    endTime: string | null;
-  };
+    startTime: string | null,
+    endTime: string | null,
+  }
+  collections: Collection[],
+  collectionIDs: number[],
 }

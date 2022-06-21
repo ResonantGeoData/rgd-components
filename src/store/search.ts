@@ -1,8 +1,7 @@
 import { ref } from 'vue';
 import {
   RGDResultList,
-  SearchParameters,
-  ResultsFilter,
+  RGDSearch,
 } from './types';
 import {
   rgdSearch,
@@ -12,67 +11,44 @@ import { Polygon, MultiPolygon } from 'geojson';
 
 export   const useMap = ref(false);
 
-export const searchLimit = ref<number>(10);
-
-export const searchOffset = ref<number>(0);
-
 export const geometryInputSelection = ref();
-
-export const specifiedShape = ref<Polygon | MultiPolygon>({ type: 'Polygon', coordinates: [] });
 
 export const drawnShape = ref<Polygon | MultiPolygon>({ type: 'Polygon', coordinates: [] });
 
 export const searchResults = ref<RGDResultList>();
 export const searchResultsTotal = ref<number>();
-export const searchParameters = ref<SearchParameters>({
+
+
+export const rgd_search = ref<RGDSearch>({
+  searchLimit: 10,
+  searchOffset: 0,
+  specifiedShape: { type: 'Polygon', coordinates: [] },
   predicate: 'intersects',
   acquired: {
     startDate: null,
     endDate: null,
   },
-});
-
-
-export const resultsFilter = ref<ResultsFilter>({
   distance: {
     min: null,
     max: null,
   },
   instrumentation: null,
-  collections: [],
-  acquired: {
-    startDate: null,
-    endDate: null,
-  },
   time: {
     startTime: null,
     endTime: null,
   },
+  collections: [],
+  collectionIDs: [],
 });
 
 export const updateResults = async () => {
-  const collectionIDs: number[] = [];
   // eslint-disable-next-line no-unused-expressions
-  resultsFilter.value.collections?.forEach((element) => {
+  rgd_search.value.collections?.forEach((element) => {
     if (element.id) {
-      collectionIDs.push(element.id);
+      rgd_search.value.collectionIDs.push(element.id);
     }
   });
-  const res = await rgdSearch(
-    searchLimit.value,
-    searchOffset.value,
-    specifiedShape.value,
-    searchParameters.value.predicate,
-    searchParameters.value.acquired.startDate,
-    searchParameters.value.acquired.endDate,
-    resultsFilter.value.distance.min,
-    resultsFilter.value.distance.max,
-    resultsFilter.value.instrumentation,
-    resultsFilter.value.time.startTime,
-    resultsFilter.value.time.endTime,
-    collectionIDs,
-
-  );
+  const res = await rgdSearch(rgd_search.value);
   searchResults.value = res.data.results;
   searchResultsTotal.value = res.data.count;
 };

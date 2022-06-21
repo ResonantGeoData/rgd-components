@@ -3,15 +3,15 @@ import {
   defineComponent, watch, toRefs, ref,
 } from 'vue';
 // import { clearMetaDataDrawer, selectedTab } from '@/store';
-// import {
-//   searchResults,
-//   searchLimit,
-//   searchOffset,
-//   searchResultsTotal,
-//   updateResults,
-//   selectResultForMetadataDrawer,
-//   updateSites,
-// } from '@/store/search';
+import {
+  searchResults,
+  searchLimit,
+  searchOffset,
+  searchResultsTotal,
+  updateResults,
+  // selectResultForMetadataDrawer,
+  // updateSites,
+} from '@/store/search';
 // import {
 //   addFootprint,
 //   removeFootprint,
@@ -156,7 +156,7 @@ export default defineComponent({
 
     return {
       // props,
-      // searchResults,
+      searchResults,
       // ...toRefs(tableOptions),
       headers,
       ellipsisText,
@@ -175,78 +175,37 @@ export default defineComponent({
 </script>
 
 <template>
-  <div>
-    <!-- <FilterMenu /> -->
-    <v-data-table
-      :headers="headers"
-      :footer-props="{ itemsPerPageOptions }"
-      dense
-      calculate-widths
-    >
-      <!-- eslint-disable-next-line -->
-      <template #item.show_overlay="{item}">
-        <v-simple-checkbox
-          v-if="item.subentry_type === 'RasterMeta'"
-          v-ripple
-          dark
-          off-icon="mdi-eye-off"
-          on-icon="mdi-eye"
-          :value="item.show_overlay"
-          style="padding: 0;"
-          z
-        />
-      </template>
-      <!-- eslint-disable-next-line -->
-      <template #item.id-name="{item}">
-        <div
-          style="max-width: 10vw;"
-        >
-          {{ item.spatial_id }}
-          {{ item.subentry_name ? ` - ${ellipsisText(item.subentry_name)}` : '' }}
-        </div>
-      </template>
-      <!-- eslint-disable-next-line -->
-      <template #item.subentry_type="{item}">
-        <v-tooltip bottom>
-          // eslint-disable-next-line vue/no-lone-template
-          <template>
-            <img
-              :src="`${item.subentry_type.toLowerCase()}.png`"
-              :alt="item.subentry_type"
-              class="data-type-icon"
-            >
-          </template>
-          <span>
-            {{ item.subentry_type }}
-          </span>
-        </v-tooltip>
-      </template>
-
-      <!-- eslint-disable-next-line -->
-      <template #item.show_footprint="{item}">
-        <v-simple-checkbox
-          v-ripple
-          dark
-          :value="item.show_footprint"
-        />
-      </template>
-      <!-- eslint-disable-next-line -->
-      <template #item.show_metadata="{item}">
-        <v-simple-checkbox
-          v-ripple
-          dark
-          off-icon="mdi-chevron-right"
-          on-icon="mdi-chevron-left"
-          :value="item.show_metadata"
-        />
-      </template>
-    </v-data-table>
-    <!-- <FocusedData
+  <!-- <FilterMenu /> -->
+  <v-table
+    dense
+  >
+    <thead>
+      <tr>
+        <th class="text-left">
+          ID-Name
+        </th>
+        <th class="text-left">
+          Data Type
+        </th>
+        <th class="text-left">
+          Show Footprint
+        </th>
+        <th class="text-left" />
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        v-for="item in searchResults"
+        :key="item.spatial_id"
+      />
+    </tbody>
+  </v-table>
+  <!-- <FocusedData
       v-if="focusFlag"
       :focused-data="focusedData"
     /> -->
-  </div>
 </template>
+
 
 <style>
 .data-type-icon {
